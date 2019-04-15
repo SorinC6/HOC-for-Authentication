@@ -1,6 +1,8 @@
 import React from "react";
 //import axios from "axios";
 import Login from "./Login";
+import { Route } from "react-router-dom";
+import Register from "./Register";
 
 const Authenticate = App => LoginPage => {
   return class extends React.Component {
@@ -26,8 +28,14 @@ const Authenticate = App => LoginPage => {
       if (this.state.loggedIn) {
         return <App />;
       } else {
-        return <Login />;
+        return (
+          <div>
+            <Route path="/register" component={Register} />
+            <Route path="/" component={Login} />
+          </div>
+        );
       }
+      return <div />;
     }
   };
 };
