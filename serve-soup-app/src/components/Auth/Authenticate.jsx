@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+//import axios from "axios";
+import Login from "./Login";
 
 const Authenticate = App => LoginPage => {
   return class extends React.Component {
