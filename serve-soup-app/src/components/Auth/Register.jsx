@@ -23,11 +23,18 @@ const Register = () => {
         userCreds
       )
       .then(res => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
       });
+  };
+
+  const clearInputs = () => {
+    setName("");
+    setRole("");
+    setPassword("");
+    setEmail("");
   };
 
   return (
@@ -51,8 +58,16 @@ const Register = () => {
             placeholder="Role"
             onChange={e => setRole(e.target.value)}
           />
-          <InputText type="text" placeholder="Email" />
-          <InputText type="password" placeholder="Password" />
+          <InputText
+            type="text"
+            placeholder="Email"
+            onChange={e => setEmail(e.target.value)}
+          />
+          <InputText
+            type="password"
+            placeholder="Password"
+            onChange={e => setPassword(e.target.value)}
+          />
           <LoginButton type="submit" value="Log In" />
           <LinkButton to="/" className="link-button" onClick={registerUser}>
             Already have an account? Log in here.
