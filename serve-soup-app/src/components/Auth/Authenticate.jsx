@@ -32,7 +32,7 @@ const Authenticate = App => LoginPage => {
         return (
           <div>
             <Route path="/register" component={Register} />
-            <Route path="/" component={Login} />
+            <Route exact path="/" component={Login} />
             <Route path="/home" component={Home} />
           </div>
         );

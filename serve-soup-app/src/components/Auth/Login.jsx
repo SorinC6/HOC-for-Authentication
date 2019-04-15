@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
-import { AST_PropAccess } from "terser";
 
-const Login = () => {
+const Login = props => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,8 +19,8 @@ const Login = () => {
         userCreds
       )
       .then(res => {
+        props.history.push("/home");
         console.log(res.data);
-        AST_PropAccess.history.push("/home");
       })
       .catch(err => {
         console.log(err);
