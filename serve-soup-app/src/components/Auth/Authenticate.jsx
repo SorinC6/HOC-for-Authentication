@@ -27,13 +27,16 @@ const Authenticate = App => LoginPage => {
 
     render() {
       if (this.state.loggedIn) {
-        return <App />;
+        return (
+          <div>
+            <App />;
+          </div>
+        );
       } else {
         return (
           <div>
             <Route path="/register" component={Register} />
             <Route exact path="/" component={Login} />
-            <Route path="/home" component={Home} />
           </div>
         );
       }
