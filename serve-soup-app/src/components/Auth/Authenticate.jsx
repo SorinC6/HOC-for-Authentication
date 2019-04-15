@@ -3,6 +3,7 @@ import React from "react";
 import Login from "./Login";
 import { Route } from "react-router-dom";
 import Register from "./Register";
+import Home from "../Home/Home";
 
 const Authenticate = App => LoginPage => {
   return class extends React.Component {
@@ -32,10 +33,10 @@ const Authenticate = App => LoginPage => {
           <div>
             <Route path="/register" component={Register} />
             <Route path="/" component={Login} />
+            <Route path="/home" component={Home} />
           </div>
         );
       }
-      return <div />;
     }
   };
 };

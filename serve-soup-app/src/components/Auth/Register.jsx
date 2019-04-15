@@ -24,6 +24,7 @@ const Register = () => {
       )
       .then(res => {
         console.log(res.data);
+        clearInputs();
       })
       .catch(err => {
         console.log(err);

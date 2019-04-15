@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
+import { AST_PropAccess } from "terser";
 
 const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  const registerUser = () => {
+  const loginUser = () => {
     const userCreds = {
       name,
       password
@@ -19,7 +20,8 @@ const Login = () => {
         userCreds
       )
       .then(res => {
-        console.log(res);
+        console.log(res.data);
+        AST_PropAccess.history.push("/home");
       })
       .catch(err => {
         console.log(err);
@@ -33,11 +35,20 @@ const Login = () => {
         <Title>Soup Kitchen</Title>
         <LoginForm
           onSubmit={e => {
-            this.props.handleLogin(e);
+            e.preventDefault();
+            loginUser();
           }}
         >
-          <InputText type="text" placeholder="Email" />
-          <InputText type="password" placeholder="Password" />
+          <InputText
+            type="text"
+            placeholder="name"
+            onChange={e => setName(e.target.value)}
+          />
+          <InputText
+            type="password"
+            placeholder="Password"
+            onChange={e => setPassword(e.target.value)}
+          />
           <LoginButton type="submit" value="Log In" />
           <LinkButton to="/register" className="link-button">
             New User? Register here.
@@ -47,7 +58,7 @@ const Login = () => {
     </Wrapper>
   );
 };
-export default Login;
+export default withRouter(Login);
 
 const Wrapper = styled.div`
   background-color: lightgoldenrodyellow;
@@ -69,25 +80,25 @@ const LoginContainer = styled.div`
   box-shadow: 0 0 30px black;
 `;
 
-const RegisterContainer = styled.div`
-  margin: 30px 0 0 0;
-  width: 100%;
-  height: 580px;
-  background: #fff;
-  border: 1px solid #e2e2e2;
-  border-radius: 3px;
-  box-shadow: 0 0 30px black;
-`;
+// const RegisterContainer = styled.div`
+//   margin: 30px 0 0 0;
+//   width: 100%;
+//   height: 580px;
+//   background: #fff;
+//   border: 1px solid #e2e2e2;
+//   border-radius: 3px;
+//   box-shadow: 0 0 30px black;
+// `;
 
 const ImageContainer = styled.div`
   width: 54%;
   margin: 21px auto;
 `;
 
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-`;
+// const Image = styled.img`
+//   width: 100%;
+//   height: auto;
+// `;
 
 const LoginForm = styled.form`
   display: flex;
